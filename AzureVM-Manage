@@ -1,0 +1,28 @@
+#!/bin/bash
+PS3='Please enter your choice: '
+options=("Start" "Stop" "Login" "RDP" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Start")
+            echo "Start you chose choice 1 Start"
+az vm start --resource-group RGNAME --name VMNAME --ids /subscriptions/1c2ef6d1-5bf9-xxx.xxx/resourceGroups/VMNAME/providers/Microsoft.Compute/virtual$
+            ;;
+        "Stop")
+            echo "Stopping VM"
+az vm stop --resource-group RGNAME --name VMNAME --ids /subscriptions/1c2ef6d1-5bf9-xxx.xxx/resourceGroups/VMNAME/providers/Microsoft.Compute/virtualM$
+            ;;
+        "Login")
+            echo "Login you chose choice 3"
+az login
+            ;;
+        "RDP")
+            echo "RDP you chose choice 1 Start"
+xfreerdp /u:username /v:dnsname.northeurope.cloudapp.azure.com +clipboard +drives /size:90% /cert-tofu
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
